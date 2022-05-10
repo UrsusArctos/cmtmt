@@ -1,0 +1,116 @@
+%
+% The Commitment Project
+%
+\documentclass[a4paper,12pt,twoside]{book}
+%
+% === [1. Document setup ] ===
+%
+% Allow for searchable PDF and text copypasting
+\usepackage{cmap}
+% encoding of input files
+\usepackage[utf8]{inputenc}
+% languages supported
+\usepackage[english]{babel}
+% Date and time
+\usepackage[showisoZ=false]{datetime2}
+% Speech quotations
+\usepackage{dirtytalk}
+% Output setup
+\pdfcompresslevel=9
+% URL formatting
+\usepackage{url}
+% Text coloring
+\usepackage{color}
+\usepackage[framemethod=tikz]{mdframed}
+% Visual guide to page layout
+%\usepackage{showframe}
+% Fix chapter spacing
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter head
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{}{}{}% Removes space above \chapter* head
+\makeatother
+% Trueness of typesettings
+\usepackage{soul}
+% Page setup
+\usepackage[top=2cm, bottom=2cm, inner=2cm, outer=2cm]{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+% Licensing
+\usepackage{hyperxmp}
+\usepackage[type={CC},modifier={by-nc-sa},version={4.0}]{doclicense}
+% QR Codes
+\usepackage{qrcode}
+% EPUB authorship hack
+\usepackage{pdftexcmds}
+\makeatletter
+\newcommand\pdforepub[2]{%
+  \ifnum\pdf@strcmp{\jobname}{\unexpanded{TheCommitment}}=0 %
+     \expandafter\@firstoftwo
+  \else
+    \expandafter\@secondoftwo
+  \fi
+    {#1}
+    {#2}%
+}
+\makeatother
+%
+% === [2. Document start ] ===
+%
+\begin{document}
+%
+% === [3. Title page ] ===
+%
+\pagestyle{empty}
+\title{\textbf{The Commitment}}
+\author{
+Gennadiy V. Poryev
+}
+\date{}
+\maketitle
+%
+% === [4. Further layout and render setup ] ===
+%
+% Define Page style for all chapters
+\pagestyle{fancy}
+% Delete the current section for header and footer
+\fancyhf{}
+% Set custom header
+\lhead[]{\thepage}
+\rhead[\thepage]{}
+% Set arabic (1,2,3...) page numbering
+\pagenumbering{arabic}
+% Set spacing for the text
+%\doublespacing
+\linespread{1.2}
+% If we ditch chapters again, leading zeroes from section numbers must be removed
+%\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+%\renewcommand{\thesection}{\arabic{section}.}
+%
+% === [5. TEXT: Preface ] ===
+%
+\include{0-preface}
+%
+% === [6. TEXT: Table of contents ] ===
+%
+\newpage
+% Include dots between chapter name and page number
+\renewcommand{\cftchapdotsep}{\cftdotsep}
+\tableofcontents
+\newpage
+\thispagestyle{empty}
+%
+% === [7. TEXT: Chapters ] ===
+%
+\include{1-chap}
+%
+\include{2-chap}
+%
+\include{3-chap}
+%
+%\appendix
+%
+%\include{9-appn}
+%
+\end{document}

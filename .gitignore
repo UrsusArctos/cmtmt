@@ -1,0 +1,26 @@
+# Build targets and auxiliary scripts
+*.pdf
+*.epub
+pfix.sh
+# Junk files left out after processing
+*.aux
+*.log
+*.out
+*.toc
+*.opf
+*.4ct
+*.4tc
+*.css
+*.dvi
+*.html
+*.idv
+*.lg
+*.ncx
+*.tmp
+*.xref
+# Junk directories left out after processing
+cmtmt-epub
+# Auxiliary directories
+.vscode
+# Not yet ready to publish materials
+world
